@@ -22,5 +22,5 @@ To encrypt + calculate checksum:
 btd5crypt -e Profile_edited.save Profile.save 
 ```
 
-All of the files named above are JSON formatted.
+All of files named above are JSON formatted when decrypted.
 
