@@ -5,7 +5,7 @@ This program allows will encrypt/encrypt and calculate checksums for Bloons TD s
 Usage:
 
 ```
-btd5crypt [-d | -e] <input file> <output file>
+btd5crypt [-d --decrypt | -e --encrypt] <input file> <output file>
 ```
 
 
