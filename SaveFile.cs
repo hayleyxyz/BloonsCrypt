@@ -16,7 +16,7 @@ namespace btd5crypt
             Stream = input;
         }
 
-        public void Decrypt(Stream output)
+        public void Decrypt(Stream output, ref bool crcValid)
         {
             var saveMagic = new byte[Magic.Length];
 
@@ -24,7 +24,7 @@ namespace btd5crypt
 
             if(!saveMagic.SequenceEqual(Magic))
             {
-                throw new SaveMalformedException("Save file does not contain expected header magic");
+                throw new MalformedSaveException("Save file does not contain expected header magic");
             }
 
             var crcAscii = new byte[8];
@@ -42,6 +42,8 @@ namespace btd5crypt
             var calcCrc = Crypt.Checksum(data, 0, data.Length);
 
             output.Write(data);
+
+            crcValid = calcCrc == crc;
         }
 
         internal void Encrypt(byte[] saveData)
