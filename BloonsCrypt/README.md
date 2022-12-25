@@ -1,6 +1,6 @@
-﻿# Bloons TD Save decrypt/encrypt tool
+﻿# Bloons Save decrypt/encrypt tool
 
-This program allows will encrypt/encrypt and calculate checksums for Bloons TD save files (Profile.save, OldProfile.save, CloudSave, events.data)
+This program allows will encrypt/encrypt and calculate checksums for Bloons TD/Battles save files (Profile.save, OldProfile.save, CloudSave, events.data)
 
 Usage:
 
