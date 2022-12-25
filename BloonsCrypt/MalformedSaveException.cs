@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace btd5crypt
+namespace BloonsCrypt
 {
     internal class MalformedSaveException : Exception
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace btd5crypt
+namespace BloonsCrypt
 {
     internal class SaveFile
     {
@@ -51,7 +51,7 @@ namespace btd5crypt
             Stream.Write(Magic);
 
             var calcCrc = Crypt.Checksum(saveData, 0, saveData.Length);
-            var asciiCrc = calcCrc.ToString("x2");
+            var asciiCrc = calcCrc.ToString("x8");
             var crcBytes = ASCIIEncoding.ASCII.GetBytes(asciiCrc);
 
             Stream.Write(crcBytes);

@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace btd5crypt
+namespace BloonsCrypt
 {
-    internal static class Crypt
+    public static class Crypt
     {
         public static void Decrypt(ref byte[] data, int start, int length)
         {
-            for (int i = start; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 data[start + i] -= (byte)((i % 6) + 0x15);
             }
@@ -14,7 +14,7 @@ namespace btd5crypt
 
         public static void Encrypt(ref byte[] data, int start, int length)
         {
-            for (int i = start; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 data[start + i] += (byte)((i % 6) + 0x15);
             }
@@ -24,9 +24,9 @@ namespace btd5crypt
         {
             uint crc = 0;
 
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                crc ^= data[i];
+                crc ^= data[start + i];
                 uint edx = (crc >> 8);
                 uint eax = crc & 0xff;
 
@@ -34,7 +34,7 @@ namespace btd5crypt
                 {
                     if ((eax & 1) == 1)
                     {
-                        eax = (uint)(((int)eax >> 1));
+                        eax = (uint)((int)eax >> 1);
                         eax = (uint)((int)eax ^ 0xEDB88320);
                     }
                     else

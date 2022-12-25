@@ -5,7 +5,7 @@ This program allows will encrypt/encrypt and calculate checksums for Bloons TD s
 Usage:
 
 ```
-btd5crypt [-d --decrypt | -e --encrypt] <input file> <output file>
+BloonsCrypt [-d --decrypt | -e --encrypt] <input file> <output file>
 ```
 
 
@@ -13,13 +13,13 @@ To decrypt a save:
 
 
 ```
-btd5crypt -d Profile.save Profile_decrypted.save 
+BloonsCrypt -d Profile.save Profile_decrypted.save 
 ```
 
 To encrypt + calculate checksum:
 
 ```
-btd5crypt -e Profile_edited.save Profile.save 
+BloonsCrypt -e Profile_edited.save Profile.save 
 ```
 
 All of files named above are JSON formatted when decrypted.

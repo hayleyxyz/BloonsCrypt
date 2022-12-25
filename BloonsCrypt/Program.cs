@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace btd5crypt
+namespace BloonsCrypt
 {
     internal class Program
     {
@@ -78,8 +78,17 @@ namespace btd5crypt
             {
                 bool crcValid = false;
 
-                var save = new SaveFile(File.Open(inputFile, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite));
-                save.Decrypt(File.Open(outputFile, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), ref crcValid);
+                using (var inputStream = File.Open(inputFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    using(var outputStream = File.Open(outputFile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        var save = new SaveFile(inputStream);
+                        save.Decrypt(outputStream, ref crcValid);
+
+                        inputStream.Close();
+                        outputStream.Close();
+                    }
+                }
 
                 if (!crcValid)
                 {
